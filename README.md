@@ -19,7 +19,7 @@ For bug reports, or enhancement requests:
 ### Usage
 
 To use libmcc.vapi simply include the 'using Mcc;' statement at the top of your
-vala code and compile your application with '--pkg=libmcc' and the vapi in
+vala code and compile your application with '--pkg=libmcc' and place the vapi in
 either the configured system vapidir or using the '--vapidir=/path/to/your/dir'
 option.
 
