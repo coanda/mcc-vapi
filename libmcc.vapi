@@ -1,5 +1,164 @@
 namespace Mcc {
 
+    [CCode (cheader_filename = "pmd.h", unref_function = "", free_function = "")]
+    public class Pmd {
+
+        [CCode (cname = "MCC_VID")]
+        public const int VID;
+
+        [CCode (cname = "CTRL_IN")]
+        public const int CTRL_IN;
+
+        [CCode (cname = "CTRL_OUT")]
+        public const int CTRL_OUT;
+
+        [CCode (cname = "INTR_LENGTH")]
+        public const int INTR_LENGTH;
+
+        [CCode (cname = "INPUT_REPORT")]
+        public const int INPUT_REPORT;
+
+        [CCode (cname = "OUTPUT_REPORT")]
+        public const int OUTPUT_REPORT;
+
+        [CCode (cname = "HOST_TO_DEVICE")]
+        public const int HOST_TO_DEVICE;
+
+        [CCode (cname = "DEVICE_TO_HOST")]
+        public const int DEVICE_TO_HOST;
+
+        [CCode (cname = "STANDARD_TYPE")]
+        public const int STANDARD_TYPE;
+
+        [CCode (cname = "CLASS_TYPE")]
+        public const int CLASS_TYPE;
+
+        [CCode (cname = "VENDOR_TYPE")]
+        public const int VENDOR_TYPE;
+
+        [CCode (cname = "RESERVED_TYPE")]
+        public const int RESERVED_TYPE;
+
+        [CCode (cname = "DEVICE_RECIPIENT")]
+        public const int DEVICE_RECIPIENT;
+
+        [CCode (cname = "INTERFACE_RECIPIENT")]
+        public const int INTERFACE_RECIPIENT;
+
+        [CCode (cname = "ENDPOINT_RECIPIENT")]
+        public const int ENDPOINT_RECIPIENT;
+
+        [CCode (cname = "OTHER_RECIPIENT")]
+        public const int OTHER_RECIPIENT;
+
+        [CCode (cname = "RESERVED_RECIPIENT")]
+        public const int RESERVED_RECIPIENT;
+
+        [CCode (cname = "usb_device_findUSB_MCC")]
+        public LibUSB.DeviceHandle usb_device_find_usb_mcc (int product_id,
+                                                                char *serialID);
+
+        [CCode (cname = "usb_get_max_packet_size")]
+        public int usb_get_max_packet_size (LibUSB.DeviceHandle udev,
+                                                              int endpoint_num);
+
+        [CCode (cname = "MAX_MESSAGE_LENGTH")]
+        public const int MAX_MESSAGE_LENGTH;
+
+        [CCode (cname = "STRING_MESSAGE")]
+        public const int STRING_MSSAGE;
+
+        [CCode (cname = "RAW_DATA")]
+        public const int RAW_DATA;
+
+        [CCode (cname = "calibrationTimeStamp")]
+        public struct CalibrationTimeStamp {
+            uint8 year;
+            uint8 month;
+            uint8 day;
+            uint8 hour;
+            uint8 minute;
+            uint8 second;
+        }
+
+        [CCode (cname = "PMD_SendOutputReport")]
+        public int send_output_report (HidApi.Device hid, uint8* values,
+ 															     size_t length);
+
+        [CCode (cname = "PMD_GetInputReport")]
+        public int get_input_report (HidApi.Device hid, uint8* values,
+ 											          size_t length, int delay);
+
+        [CCode (cname = "PMD_GetFeatureReport")]
+        public int get_feature_report (HidApi.Device hid, uint8* data,
+ 											                     size_t length);
+
+		[CCode (cname = "getusbSerialNumber")]
+		public void get_usb_serial_number (LibUSB.DeviceHandle udev,
+										                       uchar [] serial);
+
+		[CCode (cname = "sendStringRequest")]
+		public int send_string_request (LibUSB.DeviceHandle udev, char* message);
+
+		[CCode (cname = "getStringReturn")]
+        public int get_string_return (LibUSB.DeviceHandle udev, char* message);
+
+        [CCode (cname = "getRawData")]
+        public void get_raw_data (LibUSB.DeviceHandle udev, void* data);
+
+        [CCode (cname = "TYPE_J")]
+        public const int TYPE_J;
+
+        [CCode (cname = "TYPE_K")]
+        public const int TYPE_K;
+
+        [CCode (cname = "TYPE_T")]
+        public const int TYPE_T;
+
+        [CCode (cname = "TYPE_E")]
+        public const int TYPE_E;
+
+        [CCode (cname = "TYPE_R")]
+        public const int TYPE_R;
+
+        [CCode (cname = "TYPE_S")]
+        public const int TYPE_S;
+
+        [CCode (cname = "TYPE_B")]
+        public const int TYPE_B;
+
+        [CCode (cname = "TYPE_N")]
+        public const int TYPE_N;
+
+        [CCode (cname = "NIST_Table_t")]
+        public struct NISTTable {
+            public uchar n_coefficients;
+            public double v_threshold;
+            double* coefficients;
+        }
+
+        [CCode (cname = "NIST_Reverse_t")]
+        public struct NISTReverse {
+            public uchar n_coefficients;
+            double* coefficients;
+        }
+
+        [CCode (cname = "Thermocouple_Data_t")]
+        public struct Thermocouple_Data {
+            uchar nTables;
+            NISTReverse* reverse_table;
+            NISTTable* tables;
+        }
+
+        [CCode (cname = "NISTCalcVoltage")]
+        public double nist_calc_voltage (uchar tc_type, double temp);
+
+        [CCode (cname = "NISTCalcTemp")]
+        public double nist_calc_temp (uchar tc_type, double voltage);
+    }
+
+
+
     [CCode (cheader_filename = "usb-1208FS.h", unref_function = "", free_function = "")]
     public class Usb1208FS {
 
@@ -209,7 +368,7 @@ namespace Mcc {
         public int reset (LibUSB.DeviceHandle udev);
 
         [CCode (cname = "usbGetStatus_USB1208FS")]
-        public uint16 get_status (LibUSB.deviceHandle udev);
+        public uint16 get_status (LibUSB.DeviceHandle udev);
 
         [CCode (cname = "usbSetTrigger_USB1208FS")]
         public void set_trigger (LibUSB.DeviceHandle udev,uint8 type);
