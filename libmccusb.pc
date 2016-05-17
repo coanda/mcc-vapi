@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/libusb
+datarootdir=${prefix}/share
+
+Name: libmccusb
+Description: Measurement Computind Data Acquisition device driver library.
+Version: 0.1
+Requires:
+Libs: -L${libdir} -l:libmccusb.so
+Cflags: -I${includedir}/
