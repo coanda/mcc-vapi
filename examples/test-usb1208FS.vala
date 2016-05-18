@@ -286,7 +286,6 @@ public class Usb1208FsExample : GLib.Object {
                     break;
                 case 'r':
                     Mcc.Usb1208FS.reset (udev);
-                    return 0;
                     break;
 				case 'e':
                     udev.clear_halt (LibUSB.EndpointDirection.IN | 1);
@@ -299,7 +298,6 @@ public class Usb1208FsExample : GLib.Object {
                     }
                     //libusb_close(udev);
 					return 0;
-					break;
                 case 's':
                     Mcc.Pmd.get_usb_serial_number (udev, serial);
                     stdout.printf("Serial number = %s\n", (string)serial);
@@ -308,7 +306,6 @@ public class Usb1208FsExample : GLib.Object {
                     break;
             }
         }
-        return 0;
     }
 }
 

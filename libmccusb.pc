@@ -5,8 +5,8 @@ includedir=${prefix}/include/libusb
 datarootdir=${prefix}/share
 
 Name: libmccusb
-Description: Measurement Computind Data Acquisition device driver library.
+Description: Measurement Computing Data Acquisition device driver library.
 Version: 0.1
-Requires:
-Libs: -L${libdir} -l:libmccusb.so
+Requires.private:
+Libs: -L${libdir} -lmccusb -lhidapi-libusb
 Cflags: -I${includedir}/
