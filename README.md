@@ -4,17 +4,27 @@ Vala API wrapper for libmcc 1.0.X
 
 ### Overview
 
-This repository contains Vala language bindings for the libmccusb library as
-well as an examples to show its use.
+This repository contains Vala language bindings for the libmccusb library as well as an examples to show its use.
 
-The libmcc:
-    https://github.com/coanda/libmcc
+MCCLIBUSB:
+  ftp://lx10.tx.ncsu.edu/pub/Linux/drivers/USB/
 
 The Vala language:
-    http://live.gnome.org/Vala/
+  http://live.gnome.org/Vala/
 
 For bug reports, or enhancement requests:
-    https://github.com/coanda/mcc-vapi/issues
+  https://github.com/coanda/mcc-vapi/issues
+
+### Installation
+
+Installing Vapi files only requires copying them to the appropriate directory.
+
+```bash
+git clone https://github.com/coanda/mcc-vapi.git
+cd mcc-vapi
+sudo cp libmccusb.{deps,vapi} /usr/share/vala/vapi/
+sudo cp libmccusb.pc /usr/share/pkgconfig/
+```
 
 ### Usage
 
@@ -39,8 +49,6 @@ valac -C -v --pkg libmccusb test-usb1208FS.vala
 gcc -o test-usb1208FS test-usb1208FS.c `pkg-config --cflags --libs hidapi-libusb libusb-1.0 libmccusb glib-2.0 gobject-2.0`
 ```
 
-
 ### Licensing
 
 Please see the file called COPYING.
-
