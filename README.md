@@ -41,12 +41,12 @@ valac --pkg libusb --vapidir=/path/to/vapi/dir mycode.vala
 
 ### Example program
 
-To compile the example program follow these instructions. It should not be
-neccessary to do this in two step but for now this is what works.
+To compile and run the example program follow these instructions.
 
 ```bash
-valac -C -v --pkg libmccusb test-usb1208FS.vala
-gcc -o test-usb1208FS test-usb1208FS.c `pkg-config --cflags --libs hidapi-libusb libusb-1.0 libmccusb glib-2.0 gobject-2.0`
+cd example
+valac -v --pkg libmccusb test-usb1208FS.vala
+./test-usb1208FS
 ```
 
 ### Licensing

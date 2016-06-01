@@ -13,7 +13,7 @@ public class Usb1208FsExample : GLib.Object {
         short svalue;
         uint8 input, channel, gain, options;
         uint8 lowchan, highchan;
-        uint8 value = 0;
+        uint16 value = 0;
         uint16[] out_data = new uint16[512];
         short[] in_data = new short[1024];
         int count;
@@ -125,6 +125,7 @@ public class Usb1208FsExample : GLib.Object {
 					stdout.printf("Enter a value: ");
 					stdin.scanf("%hx", &value);
 					Mcc.Usb1208FS.a_out (udev, channel, value);
+					stdout.printf ("The value you entered is: %d\n", value);
 					break;
 				case 'O': /* test Analog Output Scan */
 					stdout.printf("Enter desired frequency [Hz]: ");
@@ -257,7 +258,7 @@ public class Usb1208FsExample : GLib.Object {
                             break;
                         default:
                             break;
-                     }
+                    }
 					flag = Posix.fcntl (Posix.STDIN_FILENO, Posix.F_GETFL);
 					Posix.fcntl (0, Posix.F_SETFL, flag | Posix.O_NONBLOCK);
                     do {

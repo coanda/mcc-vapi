@@ -7,6 +7,6 @@ datarootdir=${prefix}/share
 Name: libmccusb
 Description: Measurement Computing Data Acquisition device driver library.
 Version: 0.1
-Requires.private:
-Libs: -L${libdir} -lmccusb -lhidapi-libusb
+Requires: libmccusb
+Libs: -L${libdir} -llibmccusb -lhidapi-libusb
 Cflags: -I${includedir}/

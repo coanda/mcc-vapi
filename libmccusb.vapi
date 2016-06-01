@@ -160,8 +160,6 @@ namespace Mcc {
         public double nist_calc_temp (uchar tc_type, double voltage);
     }
 
-
-
     [CCode (cheader_filename = "usb-1208FS.h", unref_function = "",
 											   free_function = "")]
     public class Usb1208FS {
@@ -330,7 +328,7 @@ namespace Mcc {
 
         [CCode (cname = "usbAOut_USB1208FS")]
         public static void a_out (LibUSB.DeviceHandle udev, uint8 channel,
-								  uint8 value);
+								  uint16 value);
 
         [CCode (cname = "usbAOutScan_USB1208FS")]
         public static int a_out_scan (LibUSB.DeviceHandle udev, uint8 lowchannel,
